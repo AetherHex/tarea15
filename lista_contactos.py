@@ -20,6 +20,7 @@ def menu():
     print("")
     return opcion
 
+# para evitar que envien cadenas de texto vacias se creo la siguiente funcion de input con varios intentos
 def input_dato_valido(tipo):
     contador = 0
     while contador < 3:
@@ -36,6 +37,8 @@ def input_dato_valido(tipo):
 
 # iniciar la diccionario
 contactos = {}
+
+# LOGICA DE MENU
 
 while True:
     # imprimir menu
@@ -108,10 +111,15 @@ while True:
         # cambiando el nombre
         if cambio == "1":
             nuevo_nombre = input_dato_valido(tipo="nombre")
+            if not nuevo_nombre:
+                # no ingreso texto en el nuevo nombre, entonces lo devolvemos al menu
+                continue
+
             # borramos el anterior debido a que la claves en el diccionario son inmutables, y creamos el nuevo contacto con el mismo nombre.
             contactos[nuevo_nombre] = contactos.pop(nombre)
             # mostrar el contacto actualiazado
-            print(f"El contacto {contactos[nuevo_nombre]} ha sido actualizado")
+            print(f"El contacto {nuevo_nombre} ha sido actualizado a {contactos[nuevo_nombre]}")
+            
         # cambiando el numero
         elif cambio == "2":
             nuevo_numero = input_dato_valido(tipo="celular")
