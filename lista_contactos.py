@@ -22,11 +22,15 @@ def menu():
 
 # para evitar que envien cadenas de texto vacias se creo la siguiente funcion de input con varios intentos
 def input_dato_valido(tipo):
+    # iniciamos un contador desde 0
     contador = 0
+    # damos 3 oportunidades
     while contador < 3:
         valor = input(f"Ingrese el {tipo} del contacto: ")
+        # si el valor fue ingresado devuelve el valor a una variable
         if valor:
             return valor
+        # si el valor no fue ingresado vuelve a preguntar
         else:
             contador += 1
             print(f"Ingrese un {tipo} valido")
